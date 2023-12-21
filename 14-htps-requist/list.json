@@ -1,0 +1,11 @@
+[
+    {
+        "Titanic": "Comedia", "Country": "America", "Complated?": true
+    },
+    {
+        "Home-Alone": "Funny", "Country": "Chicago", "Complated?": false
+    },
+    {
+        "Alhazar": "Horror", "Country": "Uzbekistan", "Complated?": "Tayyorlanmoqda"
+    }
+]

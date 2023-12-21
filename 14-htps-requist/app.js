@@ -1,16 +1,30 @@
-const getTodos = (callback) => {
+// json va requistlar
+const getTodos = (resurce, callback) => {
   const requist = new XMLHttpRequest();
 
   requist.addEventListener("readystatechange", () => {
     if (requist.readyState === 4 && requist.status === 200) {
-      console.log(requist.responseText);
+      const data = JSON.parse(requist.responseText);
+      callback(undefined, data);
     } else if (requist.readyState === 4) {
-      console.log("hatolik!");
+      callback("Nimadur hato ketdi!", undefined);
     }
   });
 
-  requist.open("GET", "https://jsonplaceholder.typicode.com/todos");
+  requist.open("GET", resurce);
   requist.send();
 };
 
-
+// tartibsiz yo`l - callback hell
+getTodos("./list.json", (error, data) => {
+  console.log(data);
+  getTodos("./list.json", (error, data) => {
+    console.log(data);
+  });
+    getTodos("./list.json", (error, data) => {
+        console.log(data);
+    });
+        getTodos("./list.json", (error, data) => {
+            console.log(data);
+        });
+});
