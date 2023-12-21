@@ -1,24 +1,16 @@
-const requist = new XMLHttpRequest();
+const getTodos = (callback) => {
+  const requist = new XMLHttpRequest();
 
-requist.addEventListener('readystatechange', () => {
-    if (requist.readyState === 1) {
-        console.log('Server bilan aloqa o`rnatildi')
-    } else if (requist.readyState === 2) {
-        console.log('So`rovingiz keldi')
-    } else if (requist.readyState === 3) {
-        console.log('So`rovingiz tayyorlanmoqda')
+  requist.addEventListener("readystatechange", () => {
+    if (requist.readyState === 4 && requist.status === 200) {
+      console.log(requist.responseText);
     } else if (requist.readyState === 4) {
-        console.log('Congrats!!!')
-        console.log(requist.responseText)
+      console.log("hatolik!");
     }
-    // if (requist.readyState === 4) {
-    //     console.log(requist.responseText)
-    // }
-})
+  });
 
-// open
-requist.open('GET', 'https://jsonplaceholder.typicode.com/todos')
+  requist.open("GET", "https://jsonplaceholder.typicode.com/todos");
+  requist.send();
+};
 
-// send
-requist.send()
 
