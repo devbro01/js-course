@@ -21,7 +21,7 @@
 
 // -------- PROMISE CHAINING --------
 const getTodos = (resurce) => {
-  return new Promise((resolve, rejact) => {
+  return new P((resolve, rejact) => {
     const requist = new XMLHttpRequest();
 
     requist.addEventListener("readystatechange", () => {
@@ -41,10 +41,6 @@ const getTodos = (resurce) => {
 getTodos("./ahror.json")
   .then((data) => {
     console.log(data);
-  })
-  .then((data) => {
-    console.log(data);
-    return getTodos("./doniyor.json");
   })
   .catch((err) => {
     console.log(err);
